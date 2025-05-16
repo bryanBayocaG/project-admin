@@ -52,14 +52,16 @@ class AuthController extends Controller
         ])->withCookie($cookie);
     }
 
-    public function updateInfo(UserUpdateInfoRequest $request){
+    public function updateInfo(UserUpdateInfoRequest $request)
+    {
 
         $user = $request->user();
         $user->update($request->only('firstName', 'lastName', 'email'));
         return response($user, Response::HTTP_ACCEPTED);
     }
 
-        public function updatePassword(UserUpdatePasswordRequest $request){
+    public function updatePassword(UserUpdatePasswordRequest $request)
+    {
         $user = $request->user();
         $user->update([
             'password' => Hash::make($request->input('password')),

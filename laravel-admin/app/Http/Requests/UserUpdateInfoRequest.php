@@ -22,6 +22,8 @@ class UserUpdateInfoRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'firstName' => 'string|max:255',
+            'lastName' => 'string|max:255',
             'email' => 'email',
         ];
     }
