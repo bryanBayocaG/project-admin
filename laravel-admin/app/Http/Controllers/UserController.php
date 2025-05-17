@@ -20,7 +20,7 @@ class UserController extends Controller
     public function store(UserCreateRequest $request)
     {
         $user = User::create(
-            $request->only('firstName', 'lastName', 'email')
+            $request->only('firstName', 'lastName', 'email', 'role_id')
             + ['password' => Hash::make(1234) ]   
         );
     }
@@ -33,7 +33,7 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, string $id)
     {
         $user = User::find($id);
-        $user->update($request->only('firstName', 'lastName', 'email'));
+        $user->update($request->only('firstName', 'lastName', 'email', 'role_id'));
     return response($user, Response::HTTP_ACCEPTED);
     }
 
